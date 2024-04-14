@@ -1,15 +1,24 @@
 ﻿@model Student
-
+@using Students.Interfaces
+@using System.Globalization
 @{
     Layout = null;
 }
-
+@inject ISharedResourcesService sharedResourcesService
+@{
+    string? culture = Context.Session.GetString("Culture");
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo("en-US");
+    if (culture != null)
+    {
+        cultureInfo = CultureInfo.GetCultureInfo(culture);
+    }
+}
 <div name="subjectsChoice">
     <table>
         <thead>
-            <th>Available subjects</th>
-            <th>Operations</th>
-            <th>Chosen subjects</th>
+        <th>@sharedResourcesService.GetString("AvailableSubjects", cultureInfo)</th>
+        <th>@sharedResourcesService.GetString("Operations", cultureInfo)</th>
+        <th>@sharedResourcesService.GetString("ChosenSubjects", cultureInfo)</th>
         </thead>
         <tbody>
             <tr>

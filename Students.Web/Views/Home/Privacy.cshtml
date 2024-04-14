@@ -1,6 +1,17 @@
-﻿@{
+﻿@using Students.Interfaces
+@using System.Globalization
+@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
+@inject ISharedResourcesService sharedResourcesService
+@{
+    string? culture = Context.Session.GetString("Culture");
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo("en-US");
+    if (culture != null)
+    {
+        cultureInfo = CultureInfo.GetCultureInfo(culture);
+    }
+}
+<h1>@sharedResourcesService.GetString("PrivacyPolicy", cultureInfo)</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<p>@sharedResourcesService.GetString("UsePolicy", cultureInfo)</p>

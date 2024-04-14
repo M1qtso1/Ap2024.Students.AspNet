@@ -117,16 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Age" xml:space="preserve">
+    <value>Wiek</value>
+  </data>
+  <data name="AvailableSubjects" xml:space="preserve">
+    <value>Dostępne przedmioty</value>
+  </data>
+  <data name="ChosenSubjects" xml:space="preserve">
+    <value>Wybrane przedmioty</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Utwórz</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Usuń</value>
   </data>
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>Czy na pewno chcesz to usunąć?</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Wyświetl</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edytuj</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Powrót do listy</value>
+  </data>
+  <data name="LearnAbout" xml:space="preserve">
+    <value>Otwórz ten link, aby dowiedzieć się więcej o</value>
+  </data>
+  <data name="LinkASP" xml:space="preserve">
+    <value>tworzeniu aplikacji internetowych przy użyciu platformy ASP.NET Core</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>Kierunek</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Imię</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>Operacje</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Polityka prywatności</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student/ka</value>
+  </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>Przedmioty</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Indeks studentów</value>
+  </data>
+  <data name="UsePolicy" xml:space="preserve">
+    <value>Użyj tej strony, aby wyszczególnić politykę prywatności swojej witryny.</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Witam</value>
   </data>
 </root>
