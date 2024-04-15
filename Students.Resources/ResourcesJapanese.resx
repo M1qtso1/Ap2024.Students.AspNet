@@ -118,87 +118,87 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Age" xml:space="preserve">
-    <value>Age</value>
+    <value>年</value>
   </data>
   <data name="AvailableSubjects" xml:space="preserve">
-    <value>Available subjects</value>
+    <value>受講可能な科目</value>
   </data>
   <data name="ChosenSubjects" xml:space="preserve">
-    <value>Chosen Subjects</value>
+    <value>選ばれた被験者</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Create</value>
+    <value>作成する</value>
   </data>
   <data name="Credits" xml:space="preserve">
-    <value>Credits</value>
+    <value>クレジット</value>
   </data>
   <data name="Culture" xml:space="preserve">
-    <value>Culture</value>
+    <value>文化</value>
   </data>
   <data name="Data" xml:space="preserve">
-    <value>Data</value>
+    <value>データ</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>消去</value>
   </data>
   <data name="DeleteConfirm" xml:space="preserve">
-    <value>Are you sure you want to delete this?</value>
+    <value> これを削除してもよろしいですか?</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Details</value>
+    <value>詳細</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>編集</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home</value>
+    <value>家</value>
   </data>
   <data name="Index" xml:space="preserve">
-    <value>Back to list</value>
+    <value>リストに戻る</value>
   </data>
   <data name="IndexSubjects" xml:space="preserve">
-    <value>Index of subjects</value>
+    <value>主題の索引</value>
   </data>
   <data name="LearnAbout" xml:space="preserve">
-    <value>Learn about</value>
+    <value>について学ぶ</value>
   </data>
   <data name="LinkASP" xml:space="preserve">
-    <value>building Web apps with ASP.NET Core</value>
+    <value>ASP.NET Core を使用した Web アプリの構築</value>
   </data>
   <data name="Major" xml:space="preserve">
-    <value>Major</value>
+    <value>選考科目</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value> 名前</value>
   </data>
   <data name="NameOfSubject" xml:space="preserve">
-    <value>Name</value>
+    <value>名前</value>
   </data>
   <data name="Operations" xml:space="preserve">
-    <value>Operations</value>
+    <value>オペレーション</value>
   </data>
   <data name="PrivacyPolicy" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>プライバシーポリシー</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>保存</value>
   </data>
   <data name="Student" xml:space="preserve">
-    <value>Student</value>
+    <value> 学生</value>
   </data>
   <data name="Students" xml:space="preserve">
-    <value>Students</value>
+    <value>学生</value>
   </data>
   <data name="Subjects" xml:space="preserve">
-    <value>Subjects</value>
+    <value>科目</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Index of students</value>
+    <value>学生のインデックス</value>
   </data>
   <data name="UsePolicy" xml:space="preserve">
-    <value>Use this page to detail your site's privacy policy.</value>
+    <value>このページを使用して、サイトのプライバシー ポリシーを詳しく説明します。</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
+    <value>いらっしゃいませ</value>
   </data>
 </root>

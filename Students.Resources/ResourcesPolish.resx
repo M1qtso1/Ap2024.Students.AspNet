@@ -129,6 +129,15 @@
   <data name="Create" xml:space="preserve">
     <value>Utwórz</value>
   </data>
+  <data name="Credits" xml:space="preserve">
+    <value>Kredyty</value>
+  </data>
+  <data name="Culture" xml:space="preserve">
+    <value>Kultura</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Dane</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Usuń</value>
   </data>
@@ -141,8 +150,14 @@
   <data name="Edit" xml:space="preserve">
     <value>Edytuj</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Strona główna</value>
+  </data>
   <data name="Index" xml:space="preserve">
     <value>Powrót do listy</value>
+  </data>
+  <data name="IndexSubjects" xml:space="preserve">
+    <value>Indeks przedmiotów</value>
   </data>
   <data name="LearnAbout" xml:space="preserve">
     <value>Otwórz ten link, aby dowiedzieć się więcej o</value>
@@ -156,6 +171,9 @@
   <data name="Name" xml:space="preserve">
     <value>Imię</value>
   </data>
+  <data name="NameOfSubject" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
   <data name="Operations" xml:space="preserve">
     <value>Operacje</value>
   </data>
@@ -167,6 +185,9 @@
   </data>
   <data name="Student" xml:space="preserve">
     <value>Student/ka</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>Studenci</value>
   </data>
   <data name="Subjects" xml:space="preserve">
     <value>Przedmioty</value>

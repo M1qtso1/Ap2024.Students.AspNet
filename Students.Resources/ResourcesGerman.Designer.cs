@@ -22,24 +22,24 @@ namespace Students.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ResourcesEnglish {
+    public class ResourcesGerman {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourcesEnglish() {
+        internal ResourcesGerman() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Students.Resources.ResourcesEnglish", typeof(ResourcesEnglish).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Students.Resources.ResourcesGerman", typeof(ResourcesGerman).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Students.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,36 +61,36 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Age.
+        ///   Looks up a localized string similar to Alter.
         /// </summary>
-        public static string Age {
+        internal static string Age {
             get {
                 return ResourceManager.GetString("Age", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Available subjects.
+        ///   Looks up a localized string similar to Verfügbare Themen.
         /// </summary>
-        public static string AvailableSubjects {
+        internal static string AvailableSubjects {
             get {
                 return ResourceManager.GetString("AvailableSubjects", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chosen Subjects.
+        ///   Looks up a localized string similar to Ausgewählte Themen.
         /// </summary>
-        public static string ChosenSubjects {
+        internal static string ChosenSubjects {
             get {
                 return ResourceManager.GetString("ChosenSubjects", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create.
+        ///   Looks up a localized string similar to Erstellen.
         /// </summary>
-        public static string Create {
+        internal static string Create {
             get {
                 return ResourceManager.GetString("Create", resourceCulture);
             }
@@ -99,106 +99,106 @@ namespace Students.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Credits.
         /// </summary>
-        public static string Credits {
+        internal static string Credits {
             get {
                 return ResourceManager.GetString("Credits", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data.
+        ///   Looks up a localized string similar to Daten.
         /// </summary>
-        public static string Data {
+        internal static string Data {
             get {
                 return ResourceManager.GetString("Data", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete.
+        ///   Looks up a localized string similar to Löschen.
         /// </summary>
-        public static string Delete {
+        internal static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete this?.
+        ///   Looks up a localized string similar to Sind Sie sicher, dass Sie dies löschen möchten?.
         /// </summary>
-        public static string DeleteConfirm {
+        internal static string DeleteConfirm {
             get {
                 return ResourceManager.GetString("DeleteConfirm", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Details.
+        ///   Looks up a localized string similar to Einzelheiten.
         /// </summary>
-        public static string Details {
+        internal static string Details {
             get {
                 return ResourceManager.GetString("Details", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit.
+        ///   Looks up a localized string similar to Bearbeiten.
         /// </summary>
-        public static string Edit {
+        internal static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home.
+        ///   Looks up a localized string similar to Heim.
         /// </summary>
-        public static string Home {
+        internal static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Back to list.
+        ///   Looks up a localized string similar to Zurück zur Liste.
         /// </summary>
-        public static string Index {
+        internal static string Index {
             get {
                 return ResourceManager.GetString("Index", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index of subjects.
+        ///   Looks up a localized string similar to Themenverzeichnis.
         /// </summary>
-        public static string IndexSubjects {
+        internal static string IndexSubjects {
             get {
                 return ResourceManager.GetString("IndexSubjects", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn about.
+        ///   Looks up a localized string similar to Lernen.
         /// </summary>
-        public static string LearnAbout {
+        internal static string LearnAbout {
             get {
                 return ResourceManager.GetString("LearnAbout", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to building Web apps with ASP.NET Core.
+        ///   Looks up a localized string similar to Erstellen von Webanwendungen mit ASP.NET Core.
         /// </summary>
-        public static string LinkASP {
+        internal static string LinkASP {
             get {
                 return ResourceManager.GetString("LinkASP", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Major.
+        ///   Looks up a localized string similar to Wesentlich.
         /// </summary>
-        public static string Major {
+        internal static string Major {
             get {
                 return ResourceManager.GetString("Major", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Students.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        public static string Name {
+        internal static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
             }
@@ -216,34 +216,34 @@ namespace Students.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        public static string NameOfSubject {
+        internal static string NameOfSubject {
             get {
                 return ResourceManager.GetString("NameOfSubject", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Operations.
+        ///   Looks up a localized string similar to Operationen.
         /// </summary>
-        public static string Operations {
+        internal static string Operations {
             get {
                 return ResourceManager.GetString("Operations", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Privacy Policy.
+        ///   Looks up a localized string similar to Datenschutzrichtlinie.
         /// </summary>
-        public static string PrivacyPolicy {
+        internal static string PrivacyPolicy {
             get {
                 return ResourceManager.GetString("PrivacyPolicy", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to Speichern.
         /// </summary>
-        public static string Save {
+        internal static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
             }
@@ -252,52 +252,43 @@ namespace Students.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Student.
         /// </summary>
-        public static string Student {
+        internal static string Student {
             get {
                 return ResourceManager.GetString("Student", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Students.
+        ///   Looks up a localized string similar to Studenten.
         /// </summary>
-        public static string Students {
+        internal static string Students {
             get {
                 return ResourceManager.GetString("Students", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Subjects.
+        ///   Looks up a localized string similar to Fächer.
         /// </summary>
-        public static string Subjects {
+        internal static string Subjects {
             get {
                 return ResourceManager.GetString("Subjects", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index of students.
+        ///   Looks up a localized string similar to Auf dieser Seite können Sie die Datenschutzrichtlinien Ihrer Website detailliert beschreiben..
         /// </summary>
-        public static string Title {
-            get {
-                return ResourceManager.GetString("Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use this page to detail your site&apos;s privacy policy..
-        /// </summary>
-        public static string UsePolicy {
+        internal static string UsePolicy {
             get {
                 return ResourceManager.GetString("UsePolicy", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome.
+        ///   Looks up a localized string similar to Willkommen.
         /// </summary>
-        public static string Welcome {
+        internal static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
             }
