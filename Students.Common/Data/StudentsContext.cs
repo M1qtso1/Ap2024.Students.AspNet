@@ -5,7 +5,7 @@ namespace Students.Common.Data;
 
 public class StudentsContext : DbContext
 {
-    public StudentsContext (DbContextOptions<StudentsContext> options)
+    public StudentsContext(DbContextOptions<StudentsContext> options)
         : base(options)
     {
     }

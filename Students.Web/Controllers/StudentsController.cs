@@ -14,15 +14,18 @@ public class StudentsController : Controller
     private readonly StudentsContext _context;
     private readonly ILogger _logger;
     private readonly ISharedResourcesService _sharedResourcesService;
+    private readonly IDatabaseService _databaseService;
 
     public StudentsController(
-        StudentsContext context, 
-        ILogger<StudentsController> logger, 
-        ISharedResourcesService sharedResourcesService)
+        StudentsContext context,
+        ILogger<StudentsController> logger,
+        ISharedResourcesService sharedResourcesService,
+        IDatabaseService databaseService)
     {
         _context = context;
         _logger = logger;
         _sharedResourcesService = sharedResourcesService;
+        _databaseService = databaseService;
     }
 
     #endregion // Ctor And Properties
@@ -53,27 +56,8 @@ public class StudentsController : Controller
 
         try
         {
-            if (id != null)
-            {
-                var student = await _context.Student
-                    .FirstOrDefaultAsync(m => m.Id == id);
-                if (student is null)
-                {
-                    result = NotFound();
-                }
-                else
-                {
-                    var studentSubjects = _context.StudentSubject
-                        .Where(ss => ss.StudentId == id)
-                        .Include(ss => ss.Subject)
-                        .ToList();
-                    student.StudentSubjects = studentSubjects;
-                    if (student != null)
-                    {
-                        result = View(student);
-                    }
-                }
-            }
+            var student = await _databaseService.DisplayStudentAsync(id);
+            result = View(student);
         }
         catch (Exception ex)
         {
@@ -94,7 +78,7 @@ public class StudentsController : Controller
             var newStudent = new Student();
             newStudent.AvailableSubjects = listOfSubjects;
 
-             result = View(newStudent);
+            result = View(newStudent);
         }
         catch (Exception ex)
         {
@@ -198,11 +182,10 @@ public class StudentsController : Controller
     public async Task<IActionResult> Edit(int id, string name, int age, string major, int[] subjectIdDst)
     {
         IActionResult result;
-        var databaseService = new DatabaseService(_context);
 
         try
         {
-            bool saveResult = databaseService.EditStudent(id, name, age, major, subjectIdDst);
+            bool saveResult = _databaseService.EditStudent(id, name, age, major, subjectIdDst);
             if (!saveResult)
             {
                 throw new Exception("Error saving changes to the database.");

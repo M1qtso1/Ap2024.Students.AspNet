@@ -1,18 +1,10 @@
 ﻿@model Student
 @using Students.Interfaces
 @using System.Globalization
-
-@{
-    ViewData["Title"] = "Details";
-}
 @inject ISharedResourcesService sharedResourcesService
 @{
-    string? culture = Context.Session.GetString("Culture");
-    CultureInfo cultureInfo = CultureInfo.GetCultureInfo("en-US");
-    if (culture != null)
-    {
-        cultureInfo = CultureInfo.GetCultureInfo(culture);
-    }
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
+    ViewData["Title"] = "Details";
 }
 
 <h1>@sharedResourcesService.GetString("Details", cultureInfo)</h1>
