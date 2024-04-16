@@ -121,5 +121,45 @@ public class DatabaseService : IDatabaseService
         }
         return model;
     }
+
+    public async Task<Student?> SaveStudent(int id, string name, int age, string major, int[] subjectIdDst)
+    {
+        Student? student = null;
+        try
+        {
+            var chosenSubjects = await _context.Subject
+            .Where(s => subjectIdDst.Contains(s.Id))
+            .ToListAsync();
+
+            var availableSubjects = await _context.Subject
+            .Where(s => !subjectIdDst.Contains(s.Id))
+            .ToListAsync();
+
+            student = new Student()
+            {
+                Id = id,
+                Name = name,
+                Age = age,
+                Major = major,
+                AvailableSubjects = availableSubjects
+            };
+            _context.Add(student);
+            var additionResult = await _context.SaveChangesAsync();
+            if (additionResult == 0)
+            {
+                throw new Exception("Error saving changes to the database.");
+            }
+            foreach (var chosenSubject in chosenSubjects)
+            {
+                student.AddSubject(chosenSubject);
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught in SaveStudent: " + ex.Message);
+        }
+        return student;
+    }
+
     #endregion // Public Methods
 }

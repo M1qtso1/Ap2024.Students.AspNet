@@ -9,4 +9,5 @@ public interface IDatabaseService
     Task<Student?> DisplayStudentAsync(int? id);
     Task<Student?> CreateStudent();
     Task<List<Student>?> IndexStudent(string? culture);
+    Task<Student?> SaveStudent(int id, string name, int age, string major, int[] subjectIdDst);
 }

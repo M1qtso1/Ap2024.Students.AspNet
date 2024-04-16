@@ -93,38 +93,8 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var chosenSubjects = _context.Subject
-                .Where(s => subjectIdDst.Contains(s.Id))
-                .ToList();
-            var availableSubjects = _context.Subject
-                .Where(s => !subjectIdDst.Contains(s.Id))
-                .ToList();
-            var student = new Student()
-            {
-                Id = id,
-                Name = name,
-                Age = age,
-                Major = major,
-                AvailableSubjects = availableSubjects
-            };
-            foreach (var chosenSubject in chosenSubjects)
-            {
-                student.AddSubject(chosenSubject);
-            }
-            if (ModelState.IsValid)
-            {
-                _context.Add(student);
-                var additionResult = await _context.SaveChangesAsync();
-                if (additionResult == 0)
-                {
-                    throw new Exception("Error saving changes to the database.");
-                }
-                result = RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                result = View(student);
-            }
+            var student = await _databaseService.SaveStudent(id, name, age, major, subjectIdDst);
+            result = View(student);
         }
         catch (Exception ex)
         {
@@ -133,6 +103,8 @@ public class StudentsController : Controller
 
         return result;
     }
+
+
 
     // GET: Students/Edit/5
     public async Task<IActionResult> Edit(int? id)
