@@ -38,7 +38,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var model = await _context.Student.ToListAsync();
+            var model = await _databaseService.IndexStudent(culture);
             result = View(model);
         }
         catch (Exception ex)
@@ -68,23 +68,18 @@ public class StudentsController : Controller
     }
 
     // GET: Students/Create
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
         IActionResult result = View();
         try
         {
-            var listOfSubjects = _context.Subject
-                .ToList();
-            var newStudent = new Student();
-            newStudent.AvailableSubjects = listOfSubjects;
-
-            result = View(newStudent);
+            var student = await _databaseService.CreateStudent();
+            result = View(student);
         }
         catch (Exception ex)
         {
             _logger.LogError("Exception caught: " + ex.Message);
         }
-
         return result;
     }
 

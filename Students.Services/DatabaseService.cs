@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Students.Common.Data;
 using Students.Common.Models;
@@ -92,5 +93,33 @@ public class DatabaseService : IDatabaseService
         return student;
     }
 
+    public async Task<Student?> CreateStudent(){
+        var newStudent = new Student();
+        try
+        {
+            var listOfSubjects = await _context.Subject
+                .ToListAsync();
+            newStudent.AvailableSubjects = listOfSubjects;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught in CreateStudent: " + ex.Message);
+        }
+        return newStudent;
+    }
+
+    public async Task<List<Student>?> IndexStudent(string? culture)
+    {
+        var model = new List<Student>();
+        try
+        {
+            model = await _context.Student.ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught in IndexStudent: " + ex.Message);
+        }
+        return model;
+    }
     #endregion // Public Methods
 }
