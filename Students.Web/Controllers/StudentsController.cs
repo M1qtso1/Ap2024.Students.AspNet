@@ -95,12 +95,12 @@ public class StudentsController : Controller
         {
             var student = await _databaseService.SaveStudent(id, name, age, major, subjectIdDst);
             result = View(student);
+            return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
         {
             _logger.LogError("Exception caught: " + ex.Message);
         }
-
         return result;
     }
 
@@ -115,20 +115,9 @@ public class StudentsController : Controller
         {
             if (id != null)
             {
-                var student = await _context.Student.FindAsync(id);
+                var student = await _databaseService.EditStudents(id);
                 if (student != null)
                 {
-                    var chosenSubjects = _context.StudentSubject
-                        .Where(ss => ss.StudentId == id)
-                        .Select(ss => ss.Subject)
-                        .ToList();
-                    var availableSubjects = _context.Subject
-                        .Where(s => !chosenSubjects.Contains(s))
-                        .ToList();
-                    student.StudentSubjects = _context.StudentSubject
-                        .Where(x => x.StudentId == id)
-                        .ToList();
-                    student.AvailableSubjects = availableSubjects;
                     result = View(student);
                 }
             }
@@ -185,24 +174,14 @@ public class StudentsController : Controller
             }
             else
             {
-
-                var student = await _context.Student
-                    .FirstOrDefaultAsync(m => m.Id == id);
-                if (student == null)
-                {
-                    result = NotFound();
-                }
-                else
-                {
-                    result = View(student);
-                }
+                var student = await _databaseService.DeleteStudent(id);
+                result = View(student);
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine("Exception caught: " + ex.Message);
         }
-
         return result;
     }
 
@@ -214,13 +193,7 @@ public class StudentsController : Controller
         IActionResult result = View();
         try
         {
-            var student = await _context.Student.FindAsync(id);
-            if (student != null)
-            {
-                _context.Student.Remove(student);
-            }
-
-            await _context.SaveChangesAsync();
+            var student = await _databaseService.DeleteStudents(id);
             result = RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -234,10 +207,10 @@ public class StudentsController : Controller
     #endregion // Public Methods
 
     #region Private Methods
-
+        
     private bool StudentExists(int id)
     {
-        var result = _context.Student.Any(e => e.Id == id);
+        var result = _databaseService.StudentExist(id);
         return result;
     }
 

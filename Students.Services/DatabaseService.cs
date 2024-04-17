@@ -26,6 +26,37 @@ public class DatabaseService : IDatabaseService
 
     #region Public Methods
 
+    public async Task<Student?> EditStudents(int? id)
+    {
+        Student? student = new Student();
+        try
+        {
+            if (id != null)
+            {
+                student = await _context.Student.FindAsync(id);
+                if (student != null)
+                {
+                    var chosenSubjects = _context.StudentSubject
+                        .Where(ss => ss.StudentId == id)
+                        .Select(ss => ss.Subject)
+                        .ToList();
+                    var availableSubjects = _context.Subject
+                        .Where(s => !chosenSubjects.Contains(s))
+                        .ToList();
+                    student.StudentSubjects = _context.StudentSubject
+                        .Where(x => x.StudentId == id)
+                        .ToList();
+                    student.AvailableSubjects = availableSubjects;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Exception caught in SaveStudents: " + ex.Message);
+        }
+        return student;
+    }
+
     public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst)
     {
         var result = false;
@@ -93,7 +124,8 @@ public class DatabaseService : IDatabaseService
         return student;
     }
 
-    public async Task<Student?> CreateStudent(){
+    public async Task<Student?> CreateStudent()
+    {
         var newStudent = new Student();
         try
         {
@@ -161,5 +193,44 @@ public class DatabaseService : IDatabaseService
         return student;
     }
 
-    #endregion // Public Methods
+    public async Task<Student?> DeleteStudent(int? id)
+    {
+        Student? student = new Student();
+        try
+        {
+            student = await _context.Student
+                    .FirstOrDefaultAsync(m => m.Id == id);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exception caught in DeleteStudent: " + ex.Message);
+        }
+        return student;
+    }
+
+    public async Task<Student?> DeleteStudents(int? id)
+    {
+        Student? student = new Student();
+        try
+        {
+            student = await _context.Student.FindAsync(id);
+            if (student != null)
+            {
+                _context.Student.Remove(student);
+            }
+            await _context.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exception caught: " + ex.Message);
+        }
+
+        return student;
+        #endregion // Public Methods
+    }
+    public bool StudentExist(int id)
+    {
+        var result = _context.Student.Any(e => e.Id == id);
+        return result;
+    }
 }
