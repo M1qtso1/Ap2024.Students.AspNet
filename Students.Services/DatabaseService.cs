@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Students.Common.Data;
 using Students.Common.Models;
 using Students.Interfaces;
+using System.Runtime.InteropServices;
 
 namespace Students.Services;
 
@@ -231,6 +232,61 @@ public class DatabaseService : IDatabaseService
     public bool StudentExist(int id)
     {
         var result = _context.Student.Any(e => e.Id == id);
+        return result;
+    }
+
+    public async Task<Subject?> DetailsSubject(int? id)
+    {
+        var subject = await _context.Subject
+            .FirstOrDefaultAsync(m => m.Id == id);
+        return subject;
+    }
+
+    public async Task<List<Subject>?> IndexSubject()
+    {
+        return await _context.Subject.ToListAsync();
+    }
+
+    public async Task<Subject?> CreateSubjects(Subject subject)
+    {
+        _context.Add(subject);
+        await _context.SaveChangesAsync();
+        return subject;
+    }
+
+    public async Task<Subject?> EditSubject(int? id)
+    {
+        var subject = await _context.Subject.FindAsync(id);
+        return subject;
+    }
+
+    public async Task<Subject?> EditSubjects(int id, Subject subject)
+    {
+        _context.Update(subject);
+        await _context.SaveChangesAsync();
+        return subject;
+    }
+
+    public async Task<Subject?> DeleteSubject(int? id)
+    {
+        var subject = await _context.Subject
+            .FirstOrDefaultAsync(m => m.Id == id);
+        return subject;
+    }
+
+    public async Task<Subject?> DeleteSubjects(int id)
+    {
+        var subject = await _context.Subject.FindAsync(id);
+        if (subject != null)
+        {
+            _context.Subject.Remove(subject);
+            await _context.SaveChangesAsync();
+        }
+        return subject;
+        }
+    public bool SubjectExist(int id)
+    {
+        var result = _context.Subject.Any(e => e.Id == id);
         return result;
     }
 }
