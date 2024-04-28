@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Students.Common.Models;
 
 namespace Students.Common.Data;
@@ -18,9 +19,9 @@ public class StudentsContext : DbContext
     public DbSet<Student> Student { get; set; } = default!;
     public DbSet<Subject> Subject { get; set; } = default!;
     public DbSet<StudentSubject> StudentSubject { get; set; } = default!;
-
-    //public DbSet<Animal> Animal { get; set; }
-    //public DbSet<Book> Book { get; set; }
+    public DbSet<Classroom> Classroom { get; set; } = default!;
+    public DbSet<Lecturer> Lecturer { get; set; } = default!;
+    public DbSet<Book> Book { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -45,5 +46,14 @@ public class StudentsContext : DbContext
             .HasOne(ss => ss.Subject)
             .WithMany(s => s.StudentSubjects)
             .HasForeignKey(ss => ss.SubjectId);
+    }
+    public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<StudentsContext>
+    {
+        public StudentsContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<StudentsContext>();
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=StudentsProgrammingContext-23428837-2834-4740-ab78-0b481781e013;Trusted_Connection=True;MultipleActiveResultSets=true");
+            return new StudentsContext(optionsBuilder.Options);
+        }
     }
 }

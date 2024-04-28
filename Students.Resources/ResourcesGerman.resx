@@ -120,11 +120,23 @@
   <data name="Age" xml:space="preserve">
     <value>Alter</value>
   </data>
+  <data name="Author" xml:space="preserve">
+    <value>Autor</value>
+  </data>
   <data name="AvailableSubjects" xml:space="preserve">
     <value>Verfügbare Themen</value>
   </data>
+  <data name="Books" xml:space="preserve">
+    <value>Bücher</value>
+  </data>
+  <data name="BookTitle" xml:space="preserve">
+    <value>Titel</value>
+  </data>
   <data name="ChosenSubjects" xml:space="preserve">
     <value>Ausgewählte Themen</value>
+  </data>
+  <data name="Classrooms" xml:space="preserve">
+    <value>Klassenzimmer</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Erstellen</value>
@@ -144,6 +156,9 @@
   <data name="DeleteConfirm" xml:space="preserve">
     <value>Sind Sie sicher, dass Sie dies löschen möchten?</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Einzelheiten</value>
   </data>
@@ -154,13 +169,19 @@
     <value>Heim</value>
   </data>
   <data name="Index" xml:space="preserve">
-    <value>Zurück zur Liste</value>
+    <value>Zurück</value>
   </data>
   <data name="IndexSubjects" xml:space="preserve">
     <value>Themenverzeichnis</value>
   </data>
   <data name="LearnAbout" xml:space="preserve">
     <value>Lernen</value>
+  </data>
+  <data name="Lecturer" xml:space="preserve">
+    <value>Dozent</value>
+  </data>
+  <data name="Lecturers" xml:space="preserve">
+    <value>Dozenten</value>
   </data>
   <data name="LinkASP" xml:space="preserve">
     <value>Erstellen von Webanwendungen mit ASP.NET Core</value>
@@ -191,6 +212,9 @@
   </data>
   <data name="Subjects" xml:space="preserve">
     <value>Fächer</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Zurück</value>
   </data>
   <data name="UsePolicy" xml:space="preserve">
     <value>Auf dieser Seite können Sie die Datenschutzrichtlinien Ihrer Website detailliert beschreiben.</value>

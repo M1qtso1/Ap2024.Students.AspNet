@@ -1,27 +1,22 @@
-﻿@model Student
+﻿@model Students.Common.Models.Lecturer
 @using Students.Interfaces
 @using System.Globalization
-@{
-    ViewData["Title"] = "Create";
-}
 @inject ISharedResourcesService sharedResourcesService
 @{
-    string? culture = Context.Session.GetString("Culture");
-    CultureInfo cultureInfo = CultureInfo.GetCultureInfo("en-US");
-    if (culture != null)
-    {
-        cultureInfo = CultureInfo.GetCultureInfo(culture);  
-    }
+
+    CultureInfo cultureInfo = CultureInfo.GetCultureInfo(Context.Session.GetString("Culture") ?? "en-US");
+    ViewData["Title"] = "Edit";
 }
 
-<h1>@sharedResourcesService.GetString("Create", cultureInfo)</h1>
+<h1>Edit</h1>
 
-<h4>@sharedResourcesService.GetString("Student", cultureInfo)</h4>
+<h4>Lecturer</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" onsubmit="selectChosenSubjects()">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label class="control-label">@sharedResourcesService.GetString("Name", cultureInfo)</label>
                 <input asp-for="Name" class="form-control" />
@@ -33,12 +28,7 @@
                 <span asp-validation-for="Age" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">@sharedResourcesService.GetString("Major", cultureInfo)</label>
-                <input asp-for="Major" class="form-control" />
-                <span asp-validation-for="Major" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <partial name="_SubjectsChoicePartial" model="Model" />
+                <partial name="_SubjectsChoicePartialLecturer" model="Model" />
             </div>
             <div class="form-group">
                 <input type="submit" value="@sharedResourcesService.GetString("Create", cultureInfo)" class="btn btn-primary" />

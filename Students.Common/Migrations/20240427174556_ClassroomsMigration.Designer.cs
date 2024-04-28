@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Students.Common.Data;
 
@@ -11,9 +12,11 @@ using Students.Common.Data;
 namespace Students.Common.Migrations
 {
     [DbContext(typeof(StudentsContext))]
-    partial class StudentsContextModelSnapshot : ModelSnapshot
+    [Migration("20240427174556_ClassroomsMigration")]
+    partial class ClassroomsMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,26 +70,6 @@ namespace Students.Common.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Classroom");
-                });
-
-            modelBuilder.Entity("Students.Common.Models.Lecturer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Lecturer");
                 });
 
             modelBuilder.Entity("Students.Common.Models.Student", b =>
@@ -146,16 +129,11 @@ namespace Students.Common.Migrations
                     b.Property<int>("Credits")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LecturerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LecturerId");
 
                     b.ToTable("Subject");
                 });
@@ -184,18 +162,6 @@ namespace Students.Common.Migrations
                     b.Navigation("Student");
 
                     b.Navigation("Subject");
-                });
-
-            modelBuilder.Entity("Students.Common.Models.Subject", b =>
-                {
-                    b.HasOne("Students.Common.Models.Lecturer", null)
-                        .WithMany("Subjects")
-                        .HasForeignKey("LecturerId");
-                });
-
-            modelBuilder.Entity("Students.Common.Models.Lecturer", b =>
-                {
-                    b.Navigation("Subjects");
                 });
 
             modelBuilder.Entity("Students.Common.Models.Student", b =>

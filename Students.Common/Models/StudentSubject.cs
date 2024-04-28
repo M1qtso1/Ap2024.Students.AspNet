@@ -13,4 +13,5 @@ public class StudentSubject
 
     public int SubjectId { get; set; }
     public required Subject Subject { get; set; }
+
 }

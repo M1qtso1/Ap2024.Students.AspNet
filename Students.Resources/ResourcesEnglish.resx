@@ -120,11 +120,23 @@
   <data name="Age" xml:space="preserve">
     <value>Age</value>
   </data>
+  <data name="Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
   <data name="AvailableSubjects" xml:space="preserve">
     <value>Available subjects</value>
   </data>
+  <data name="Books" xml:space="preserve">
+    <value>Books</value>
+  </data>
+  <data name="BookTitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
   <data name="ChosenSubjects" xml:space="preserve">
     <value>Chosen Subjects</value>
+  </data>
+  <data name="Classrooms" xml:space="preserve">
+    <value>Classrooms</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
@@ -144,6 +156,9 @@
   <data name="DeleteConfirm" xml:space="preserve">
     <value>Are you sure you want to delete this?</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Details</value>
   </data>
@@ -161,6 +176,12 @@
   </data>
   <data name="LearnAbout" xml:space="preserve">
     <value>Learn about</value>
+  </data>
+  <data name="Lecturer" xml:space="preserve">
+    <value>Lecturer</value>
+  </data>
+  <data name="Lecturers" xml:space="preserve">
+    <value>Lecturers</value>
   </data>
   <data name="LinkASP" xml:space="preserve">
     <value>building Web apps with ASP.NET Core</value>
@@ -193,7 +214,7 @@
     <value>Subjects</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Index of students</value>
+    <value>Index</value>
   </data>
   <data name="UsePolicy" xml:space="preserve">
     <value>Use this page to detail your site's privacy policy.</value>

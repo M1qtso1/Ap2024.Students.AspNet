@@ -120,11 +120,23 @@
   <data name="Age" xml:space="preserve">
     <value>Wiek</value>
   </data>
+  <data name="Author" xml:space="preserve">
+    <value>Autor</value>
+  </data>
   <data name="AvailableSubjects" xml:space="preserve">
     <value>Dostępne przedmioty</value>
   </data>
+  <data name="Books" xml:space="preserve">
+    <value>Książki</value>
+  </data>
+  <data name="BookTitle" xml:space="preserve">
+    <value>Tytuł</value>
+  </data>
   <data name="ChosenSubjects" xml:space="preserve">
     <value>Wybrane przedmioty</value>
+  </data>
+  <data name="Classrooms" xml:space="preserve">
+    <value>Sale lekcyjne</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Utwórz</value>
@@ -144,6 +156,9 @@
   <data name="DeleteConfirm" xml:space="preserve">
     <value>Czy na pewno chcesz to usunąć?</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Opis</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Wyświetl</value>
   </data>
@@ -161,6 +176,12 @@
   </data>
   <data name="LearnAbout" xml:space="preserve">
     <value>Otwórz ten link, aby dowiedzieć się więcej o</value>
+  </data>
+  <data name="Lecturer" xml:space="preserve">
+    <value>Wykładowca</value>
+  </data>
+  <data name="Lecturers" xml:space="preserve">
+    <value>Wykładowcy</value>
   </data>
   <data name="LinkASP" xml:space="preserve">
     <value>tworzeniu aplikacji internetowych przy użyciu platformy ASP.NET Core</value>
@@ -193,7 +214,7 @@
     <value>Przedmioty</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Indeks studentów</value>
+    <value>Indeks</value>
   </data>
   <data name="UsePolicy" xml:space="preserve">
     <value>Użyj tej strony, aby wyszczególnić politykę prywatności swojej witryny.</value>

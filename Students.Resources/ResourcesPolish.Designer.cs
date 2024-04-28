@@ -70,6 +70,15 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Autor.
+        /// </summary>
+        public static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dostępne przedmioty.
         /// </summary>
         public static string AvailableSubjects {
@@ -79,11 +88,38 @@ namespace Students.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Książki.
+        /// </summary>
+        public static string Books {
+            get {
+                return ResourceManager.GetString("Books", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tytuł.
+        /// </summary>
+        public static string BookTitle {
+            get {
+                return ResourceManager.GetString("BookTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wybrane przedmioty.
         /// </summary>
         public static string ChosenSubjects {
             get {
                 return ResourceManager.GetString("ChosenSubjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sale lekcyjne.
+        /// </summary>
+        public static string Classrooms {
+            get {
+                return ResourceManager.GetString("Classrooms", resourceCulture);
             }
         }
         
@@ -129,6 +165,15 @@ namespace Students.Resources {
         public static string DeleteConfirm {
             get {
                 return ResourceManager.GetString("DeleteConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opis.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -183,6 +228,24 @@ namespace Students.Resources {
         public static string LearnAbout {
             get {
                 return ResourceManager.GetString("LearnAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wykładowca.
+        /// </summary>
+        public static string Lecturer {
+            get {
+                return ResourceManager.GetString("Lecturer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wykładowcy.
+        /// </summary>
+        public static string Lecturers {
+            get {
+                return ResourceManager.GetString("Lecturers", resourceCulture);
             }
         }
         
@@ -277,7 +340,7 @@ namespace Students.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indeks studentów.
+        ///   Looks up a localized string similar to Indeks.
         /// </summary>
         public static string Title {
             get {

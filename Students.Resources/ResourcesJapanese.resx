@@ -120,11 +120,23 @@
   <data name="Age" xml:space="preserve">
     <value>年</value>
   </data>
+  <data name="Author" xml:space="preserve">
+    <value>著者</value>
+  </data>
   <data name="AvailableSubjects" xml:space="preserve">
     <value>受講可能な科目</value>
   </data>
+  <data name="Books" xml:space="preserve">
+    <value>本</value>
+  </data>
+  <data name="BookTitle" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
   <data name="ChosenSubjects" xml:space="preserve">
     <value>選ばれた被験者</value>
+  </data>
+  <data name="Classrooms" xml:space="preserve">
+    <value>教室</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>作成する</value>
@@ -144,6 +156,9 @@
   <data name="DeleteConfirm" xml:space="preserve">
     <value> これを削除してもよろしいですか?</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>説明</value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>詳細</value>
   </data>
@@ -161,6 +176,12 @@
   </data>
   <data name="LearnAbout" xml:space="preserve">
     <value>について学ぶ</value>
+  </data>
+  <data name="Lecturer" xml:space="preserve">
+    <value>講師</value>
+  </data>
+  <data name="Lecturers" xml:space="preserve">
+    <value>講師</value>
   </data>
   <data name="LinkASP" xml:space="preserve">
     <value>ASP.NET Core を使用した Web アプリの構築</value>
