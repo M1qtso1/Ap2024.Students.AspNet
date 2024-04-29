@@ -23,4 +23,8 @@ public interface IDatabaseService
     Task<Subject?> DeleteSubject(int? id);
     Task<Subject?> DeleteSubjects(int id);
     bool SubjectExist(int id);
+    Task<Book?> DetailsBooks(int? id);
+    Task<Book?> CreateBooks(Book book);
+
+    Task<Book?> EditBooks(int? id);
 }

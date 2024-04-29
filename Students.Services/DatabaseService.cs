@@ -289,4 +289,31 @@ public class DatabaseService : IDatabaseService
         var result = _context.Subject.Any(e => e.Id == id);
         return result;
     }
+
+    public async Task<Book?> DetailsBooks(int? id)
+    {
+        var book = await _context.Book
+            .FirstOrDefaultAsync(m => m.Id == id);
+        return book ;
+    }
+
+    public async Task<Book?> CreateBooks(Book book)
+    {
+        _context.Add(book);
+            await _context.SaveChangesAsync();
+        return book;
+    }
+
+    public async Task<Book?> EditBooks(int? id)
+    {
+        var book = await _context.Book.FindAsync(id);
+        return book;
+    }
+
+    public async Task<Book?> EditBook(int id, Book book)
+    {
+        _context.Update(book);
+        await _context.SaveChangesAsync();
+        return book;
+    }
 }
