@@ -132,6 +132,9 @@
   <data name="BookTitle" xml:space="preserve">
     <value>タイトル</value>
   </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>容量</value>
+  </data>
   <data name="ChosenSubjects" xml:space="preserve">
     <value>選ばれた被験者</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="Edit" xml:space="preserve">
     <value>編集</value>
   </data>
+  <data name="Floor" xml:space="preserve">
+    <value>床</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>家</value>
   </data>
@@ -194,6 +200,9 @@
   </data>
   <data name="NameOfSubject" xml:space="preserve">
     <value>名前</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>番号</value>
   </data>
   <data name="Operations" xml:space="preserve">
     <value>オペレーション</value>

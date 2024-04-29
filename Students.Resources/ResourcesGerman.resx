@@ -132,6 +132,9 @@
   <data name="BookTitle" xml:space="preserve">
     <value>Titel</value>
   </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>Kapazität</value>
+  </data>
   <data name="ChosenSubjects" xml:space="preserve">
     <value>Ausgewählte Themen</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="Edit" xml:space="preserve">
     <value>Bearbeiten</value>
   </data>
+  <data name="Floor" xml:space="preserve">
+    <value>Boden</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Heim</value>
   </data>
@@ -194,6 +200,9 @@
   </data>
   <data name="NameOfSubject" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Nummer</value>
   </data>
   <data name="Operations" xml:space="preserve">
     <value>Operationen</value>
