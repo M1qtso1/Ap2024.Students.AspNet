@@ -310,10 +310,143 @@ public class DatabaseService : IDatabaseService
         return book;
     }
 
-    public async Task<Book?> EditBook(int id, Book book)
+    public async Task<Book?> EditBook(int? id, Book book)
     {
         _context.Update(book);
         await _context.SaveChangesAsync();
         return book;
+    }
+    public async Task<Book?> DeleteBooks(int? id)
+    {
+        var book = await _context.Book
+            .FirstOrDefaultAsync(m => m.Id == id);
+        return book;
+    }
+    public async Task<Book?> DeleteConfirmedBook(int id)
+    {
+        await _context.SaveChangesAsync();
+        var book = await _context.Book.FindAsync(id);
+        if (book != null)
+        {
+            _context.Book.Remove(book);
+            await _context.SaveChangesAsync();
+        }
+        return book;
+    }
+    public bool BookExist(int id)
+    {
+        var result = _context.Book.Any(e => e.Id == id);
+        return result;
+    }
+    public async Task<Classroom?> DetailsClassrooms(int? id)
+    {
+        var classroom = await _context.Classroom
+            .FirstOrDefaultAsync(m => m.Id == id);
+        return classroom;
+    }
+    public async Task<Classroom?> CreateClassroom(Classroom classroom)
+    {
+        _context.Add(classroom);
+            await _context.SaveChangesAsync();
+
+        return classroom;
+    }
+    public async Task<Classroom?> EditClassroom(int? id)
+    {
+        var classroom = await _context.Classroom.FindAsync(id);
+        return classroom;
+    }
+    public async Task<Classroom?> EditClassrooms(int id,Classroom classroom)
+    {
+        _context.Update(classroom);
+                await _context.SaveChangesAsync();
+        return classroom;
+    }
+    public async Task<Classroom?> DeleteClassroom(int? id)
+    {
+        var classroom = await _context.Classroom
+            .FirstOrDefaultAsync(m => m.Id == id);
+        return classroom;
+    }
+    public async Task<Classroom?> DeleteConfirmedClassroom(int id)
+    {
+        var classroom = await _context.Classroom.FindAsync(id);
+        if (classroom != null)
+        {
+            _context.Classroom.Remove(classroom);
+            await _context.SaveChangesAsync();
+        }
+        return classroom;
+    }
+    public bool ClassroomExist(int id)
+    {
+        return _context.Classroom.Any(e => e.Id == id);
+    }
+
+    public async Task<Lecturer?> DetailsLecturer(int? id)
+    {
+
+        var lecturer = await _context.Lecturer.Include(x => x.Subjects)
+            .FirstOrDefaultAsync(m => m.Id == id);
+        return lecturer;
+    }
+
+    public async Task<Lecturer?> CreateLecturer()
+    {
+        var lecturer = new Lecturer();
+        lecturer.AvailableSubjects = await _context.Subject.ToListAsync();
+        return lecturer;
+    }
+    public async Task<Lecturer?> SaveLecturer(Lecturer lecturer, int[] subjectIdDst)
+    {
+        var chosenSubjects = await _context.Subject
+        .Where(s => subjectIdDst.Contains(s.Id))
+        .ToListAsync();
+        if (chosenSubjects.Count > 0)
+        {
+            lecturer.Subjects = chosenSubjects;
+        }
+        else
+        {
+            lecturer.AvailableSubjects = _context.Subject.ToList();
+        }
+        _context.Add(lecturer);
+            await _context.SaveChangesAsync();
+        
+        return lecturer;
+    }
+    public async Task<Lecturer?> EditLecturer(int? id)
+    {
+        var lecturer = await _context.Lecturer.FindAsync(id);
+        return lecturer;
+    }
+    public async Task<Lecturer?> EditLecturers(int id, Lecturer lecturer)
+    {
+                _context.Update(lecturer);
+                await _context.SaveChangesAsync();
+        return lecturer;
+    }
+    public async Task<Lecturer?> DeleteLecturer(int? id)
+    {
+
+        var lecturer = await _context.Lecturer
+            .FirstOrDefaultAsync(m => m.Id == id);
+
+        return lecturer;
+    }
+    public async Task<Lecturer?> DeleteConfirmedLecturer(int id)
+    {
+        var lecturer = await _context.Lecturer.FindAsync(id);
+        if (lecturer != null)
+        {
+            _context.Lecturer.Remove(lecturer);
+        }
+
+        await _context.SaveChangesAsync();
+        return lecturer;
+    }
+    public bool LecturerExist(int id)
+    {
+        return _context.Lecturer.Any(e => e.Id == id);
     }
 }

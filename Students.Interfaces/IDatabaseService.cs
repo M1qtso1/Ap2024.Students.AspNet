@@ -27,4 +27,23 @@ public interface IDatabaseService
     Task<Book?> CreateBooks(Book book);
 
     Task<Book?> EditBooks(int? id);
+    Task<Book?> EditBook(int? id, Book book);
+    Task<Book?> DeleteBooks(int? id);
+    Task<Book?> DeleteConfirmedBook(int id);
+    bool BookExist(int id);
+    Task<Classroom?> DetailsClassrooms(int? id);
+    Task<Classroom?> CreateClassroom(Classroom classroom); 
+    Task<Classroom?> EditClassroom(int? id);
+    Task<Classroom?> EditClassrooms(int id, Classroom classroom);
+    Task<Classroom?> DeleteClassroom(int? id);
+    Task<Classroom?> DeleteConfirmedClassroom(int id);
+    bool ClassroomExist(int id);
+    Task<Lecturer?> DetailsLecturer(int? id);
+    Task<Lecturer?> CreateLecturer();
+    Task<Lecturer?> SaveLecturer(Lecturer lecturer, int[] subjectIdDst);
+    Task<Lecturer?> EditLecturer(int? id);
+    Task<Lecturer?> EditLecturers(int id, Lecturer lecturer);
+    Task<Lecturer?> DeleteLecturer(int? id);
+    Task<Lecturer?> DeleteConfirmedLecturer(int id);
+    bool LecturerExist(int id);
 }

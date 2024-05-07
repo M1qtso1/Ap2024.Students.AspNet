@@ -7,16 +7,36 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Students.Common.Data;
 using Students.Common.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Students.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using NuGet.DependencyResolver;
+using Students.Interfaces;
 
 namespace Students.Web.Controllers
 {
     public class ClassroomsController : Controller
     {
         private readonly StudentsContext _context;
+        private readonly ILogger _logger;
+        private readonly ISharedResourcesService _sharedResourcesService;
+        private readonly IDatabaseService _databaseService;
 
-        public ClassroomsController(StudentsContext context)
+        public ClassroomsController(StudentsContext context,
+        ILogger<StudentsController> logger,
+        ISharedResourcesService sharedResourcesService,
+        IDatabaseService databaseService)
         {
             _context = context;
+            _logger = logger;
+            _sharedResourcesService = sharedResourcesService;
+            _databaseService = databaseService;
         }
 
         // GET: Classrooms
@@ -33,14 +53,14 @@ namespace Students.Web.Controllers
                 return NotFound();
             }
 
-            var classroom = await _context.Classroom
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var classroom = await _databaseService.DetailsClassrooms(id);
+            var result = View(classroom);
             if (classroom == null)
             {
                 return NotFound();
             }
 
-            return View(classroom);
+            return result;
         }
 
         // GET: Classrooms/Create
@@ -56,13 +76,15 @@ namespace Students.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Number,Floor,Capacity")] Classroom classroom)
         {
+
+            IActionResult result = View();
             if (ModelState.IsValid)
             {
-                _context.Add(classroom);
-                await _context.SaveChangesAsync();
+                await _databaseService.CreateClassroom(classroom);
+                result = View(classroom);
                 return RedirectToAction(nameof(Index));
             }
-            return View(classroom);
+            return result;
         }
 
         // GET: Classrooms/Edit/5
@@ -73,12 +95,13 @@ namespace Students.Web.Controllers
                 return NotFound();
             }
 
-            var classroom = await _context.Classroom.FindAsync(id);
+            var classroom = await _databaseService.EditClassroom(id);
+            var result = View(classroom);
             if (classroom == null)
             {
                 return NotFound();
             }
-            return View(classroom);
+            return result;
         }
 
         // POST: Classrooms/Edit/5
@@ -88,6 +111,7 @@ namespace Students.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Number,Floor,Capacity")] Classroom classroom)
         {
+            IActionResult result = View();
             if (id != classroom.Id)
             {
                 return NotFound();
@@ -97,8 +121,8 @@ namespace Students.Web.Controllers
             {
                 try
                 {
-                    _context.Update(classroom);
-                    await _context.SaveChangesAsync();
+                    await _databaseService.EditClassrooms(id, classroom);
+                    result = View(classroom);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -113,7 +137,7 @@ namespace Students.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(classroom);
+            return result;
         }
 
         // GET: Classrooms/Delete/5
@@ -124,14 +148,14 @@ namespace Students.Web.Controllers
                 return NotFound();
             }
 
-            var classroom = await _context.Classroom
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var classroom = await _databaseService.DeleteClassroom(id);
+            var result = View(classroom);
             if (classroom == null)
             {
                 return NotFound();
             }
 
-            return View(classroom);
+            return result;
         }
 
         // POST: Classrooms/Delete/5
@@ -139,19 +163,15 @@ namespace Students.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var classroom = await _context.Classroom.FindAsync(id);
-            if (classroom != null)
-            {
-                _context.Classroom.Remove(classroom);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var classroom = await _databaseService.DeleteConfirmedClassroom(id);
+            var result = RedirectToAction(nameof(Index));
+            return result;
         }
 
         private bool ClassroomExists(int id)
         {
-            return _context.Classroom.Any(e => e.Id == id);
+            var result = _databaseService.ClassroomExist(id);
+            return result;
         }
     }
 }

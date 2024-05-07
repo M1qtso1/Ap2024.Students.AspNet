@@ -105,34 +105,37 @@ namespace Students.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Author,Description")] Book book)
-        //{
-        //    if (id != book.Id)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Author,Description")] Book book)
+        {
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            await _databaseService.EditBooks(id, book);
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!BookExists(book.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(book);
-        //}
+            IActionResult result = View();
+            if (id != book.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _databaseService.EditBook(id, book);
+                    result = View(book);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BookExists(book.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return result;
+        }
 
         // GET: Books/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -142,14 +145,14 @@ namespace Students.Web.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Book
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var book = await _databaseService.DeleteBooks(id);
+            var result = View(book);
             if (book == null)
             {
                 return NotFound();
             }
 
-            return View(book);
+            return result;
         }
 
         // POST: Books/Delete/5
@@ -157,19 +160,15 @@ namespace Students.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var book = await _context.Book.FindAsync(id);
-            if (book != null)
-            {
-                _context.Book.Remove(book);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var book = await _databaseService.DeleteConfirmedBook(id);
+            var result = RedirectToAction(nameof(Index));
+            return result;
         }
 
         private bool BookExists(int id)
         {
-            return _context.Book.Any(e => e.Id == id);
+            var result = _databaseService.BookExist(id);
+            return result;
         }
     }
 }

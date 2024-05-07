@@ -7,16 +7,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Students.Common.Data;
 using Students.Common.Models;
+using Students.Interfaces;
 
 namespace Students.Web.Controllers
 {
     public class LecturersController : Controller
     {
         private readonly StudentsContext _context;
+        private readonly ILogger _logger;
+        private readonly ISharedResourcesService _sharedResourcesService;
+        private readonly IDatabaseService _databaseService;
 
-        public LecturersController(StudentsContext context)
+        public LecturersController(StudentsContext context,
+        ILogger<StudentsController> logger,
+        ISharedResourcesService sharedResourcesService,
+        IDatabaseService databaseService)
         {
             _context = context;
+            _logger = logger;
+            _sharedResourcesService = sharedResourcesService;
+            _databaseService = databaseService;
         }
 
         // GET: Lecturers
@@ -32,23 +42,21 @@ namespace Students.Web.Controllers
             {
                 return NotFound();
             }
-
-            var lecturer = await _context.Lecturer.Include(x => x.Subjects)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var lecturer = await _databaseService.DetailsLecturer(id);
+            var result = View(lecturer);
             if (lecturer == null)
             {
                 return NotFound();
             }
-
-            return View(lecturer);
+            return result;
         }
 
         // GET: Lecturers/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            var lecturer = new Lecturer();
-            lecturer.AvailableSubjects = _context.Subject.ToList();
-            return View(lecturer);
+            var lecturer = await _databaseService.CreateLecturer();
+            var result = View(lecturer);
+            return result;
         }
 
         // POST: Lecturers/Create
@@ -58,25 +66,19 @@ namespace Students.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Age")] Lecturer lecturer, int[] subjectIdDst)
         {
-            var chosenSubjects = await _context.Subject
-            .Where(s => subjectIdDst.Contains(s.Id))
-            .ToListAsync();
-            if (chosenSubjects.Count>0)
-            {
-                lecturer.Subjects = chosenSubjects;
-            }
-            else
-            {
-                lecturer.AvailableSubjects = _context.Subject.ToList();
-                ModelState.AddModelError("AvailableSubjects", "error ");
-            }
+            IActionResult result = View();
             if (ModelState.IsValid)
             {
                 _context.Add(lecturer);
-                await _context.SaveChangesAsync();
+                await _databaseService.SaveLecturer(lecturer, subjectIdDst);
+                result = View(lecturer);
                 return RedirectToAction(nameof(Index));
             }
-            return View(lecturer);
+            else
+            {
+                ModelState.AddModelError("AvailableSubjects", "error ");
+            }
+            return result;
         }
 
         // GET: Lecturers/Edit/5
@@ -87,12 +89,13 @@ namespace Students.Web.Controllers
                 return NotFound();
             }
 
-            var lecturer = await _context.Lecturer.FindAsync(id);
+            var lecturer = await _databaseService.EditLecturer(id);
+            var result = View(lecturer);
             if (lecturer == null)
             {
                 return NotFound();
             }
-            return View(lecturer);
+            return result;
         }
 
         // POST: Lecturers/Edit/5
@@ -102,6 +105,7 @@ namespace Students.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Age")] Lecturer lecturer)
         {
+            IActionResult result = View();
             if (id != lecturer.Id)
             {
                 return NotFound();
@@ -111,8 +115,8 @@ namespace Students.Web.Controllers
             {
                 try
                 {
-                    _context.Update(lecturer);
-                    await _context.SaveChangesAsync();
+                    await _databaseService.EditLecturers(id, lecturer);
+                    result = View(lecturer);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -127,7 +131,7 @@ namespace Students.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(lecturer);
+            return result;
         }
 
         // GET: Lecturers/Delete/5
@@ -138,14 +142,14 @@ namespace Students.Web.Controllers
                 return NotFound();
             }
 
-            var lecturer = await _context.Lecturer
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var lecturer = await _databaseService.DeleteLecturer(id);
+            var result = View(lecturer);
             if (lecturer == null)
             {
                 return NotFound();
             }
 
-            return View(lecturer);
+            return result;
         }
 
         // POST: Lecturers/Delete/5
@@ -153,19 +157,15 @@ namespace Students.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var lecturer = await _context.Lecturer.FindAsync(id);
-            if (lecturer != null)
-            {
-                _context.Lecturer.Remove(lecturer);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var lecturer = await _databaseService.DeleteConfirmedLecturer(id);
+            var result = RedirectToAction(nameof(Index));
+            return result;
         }
 
         private bool LecturerExists(int id)
         {
-            return _context.Lecturer.Any(e => e.Id == id);
+            var result = _databaseService.LecturerExist(id);
+            return result;
         }
     }
 }

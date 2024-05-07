@@ -132,14 +132,13 @@ public class SubjectsController : Controller
     // GET: Subjects/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
-        IActionResult result = NotFound();
         if (id == null)
         {
             return NotFound();
         }
 
         var subject = await _databaseService.DeleteSubject(id);
-        result = View(subject);
+        var result = View(subject);
         if (subject == null)
         {
             return NotFound();
