@@ -90,7 +90,7 @@ try
         }
 
         await next();
-    });
+        });
 
     app.UseAuthorization();
 

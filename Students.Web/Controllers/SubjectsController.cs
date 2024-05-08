@@ -13,6 +13,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Students.Common.Attributes;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace Students.Web.Controllers;
@@ -66,7 +69,7 @@ public class SubjectsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Id,Name,Credits")] Subject subject)
     {
-        IActionResult result = NotFound();
+        IActionResult result = View(subject);
         if (ModelState.IsValid)
         {
             await _databaseService.CreateSubjects(subject) ;

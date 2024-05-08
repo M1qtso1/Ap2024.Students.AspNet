@@ -177,15 +177,18 @@ public class DatabaseService : IDatabaseService
                 AvailableSubjects = availableSubjects
             };
             _context.Add(student);
+
+            foreach (var chosenSubject in chosenSubjects)
+            {
+                student.AddSubject(chosenSubject);
+            }
+
             var additionResult = await _context.SaveChangesAsync();
             if (additionResult == 0)
             {
                 throw new Exception("Error saving changes to the database.");
             }
-            foreach (var chosenSubject in chosenSubjects)
-            {
-                student.AddSubject(chosenSubject);
-            }
+
         }
         catch (Exception ex)
         {
@@ -436,7 +439,7 @@ public class DatabaseService : IDatabaseService
     }
     public async Task<Lecturer?> DeleteConfirmedLecturer(int id)
     {
-        var lecturer = await _context.Lecturer.FindAsync(id);
+        var lecturer = await _context.Lecturer.Include(x=>x.Subjects).SingleOrDefaultAsync(x=>x.Id == id);
         if (lecturer != null)
         {
             _context.Lecturer.Remove(lecturer);

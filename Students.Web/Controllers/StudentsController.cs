@@ -77,15 +77,8 @@ public class StudentsController : Controller
     public async Task<IActionResult> Create()
     {
         IActionResult result = View();
-        try
-        {
-            var student = await _databaseService.CreateStudent();
-            result = View(student);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError("Exception caught: " + ex.Message);
-        }
+                var student = await _databaseService.CreateStudent();
+                result = View(student);
         return result;
     }
 
@@ -94,14 +87,21 @@ public class StudentsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(int id, string name, int age, string major, int[] subjectIdDst)
+    public async Task<IActionResult> Create(Student student, int[] subjectIdDst)
     {
         IActionResult result = View();
         try
         {
-            var student = await _databaseService.SaveStudent(id, name, age, major, subjectIdDst);
-            result = View(student);
-            return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+            {
+                var newstudent = await _databaseService.SaveStudent(student.Id, student.Name, student.Age, student.Major, subjectIdDst);
+                result = View(newstudent);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                result = View(await _databaseService.CreateStudent());
+            }
         }
         catch (Exception ex)
         {

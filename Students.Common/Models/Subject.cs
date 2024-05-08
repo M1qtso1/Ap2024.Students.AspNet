@@ -1,9 +1,11 @@
+using Students.Common.Attributes;
+
 namespace Students.Common.Models;
 
 public class Subject
 {
     public int Id { get; set; }
-
+    [SubjectCantStartWithNumbersOrLowercase]
     public string Name { get; set; } = string.Empty;
     public int Credits { get; set; }
 

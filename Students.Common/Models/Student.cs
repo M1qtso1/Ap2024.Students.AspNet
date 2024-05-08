@@ -1,3 +1,4 @@
+using Students.Common.Attributes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,9 +7,8 @@ namespace Students.Common.Models;
 public class Student
 {
     public int Id { get; set; }
-
-    [Required]
     [StringLength(100)]
+    [NameShouldNotStartWithLowercase]
     public string Name { get; set; } = string.Empty;
 
     [Range(1, 100)]
@@ -35,7 +35,7 @@ public class Student
     }
 
     public void AddSubject(Subject subject)
-    { 
+    {
         var studentSubject = new StudentSubject
         {
             Student = this,
