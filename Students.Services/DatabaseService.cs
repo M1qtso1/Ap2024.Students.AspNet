@@ -58,7 +58,7 @@ public class DatabaseService : IDatabaseService
         return student;
     }
 
-    public bool EditStudent(int id, string name, int age, string major, int[] subjectIdDst)
+    public bool EditStudent(int id, string name, int age, string major, string postalcode,int[] subjectIdDst)
     {
         var result = false;
 
@@ -70,6 +70,7 @@ public class DatabaseService : IDatabaseService
             student.Name = name;
             student.Age = age;
             student.Major = major;
+            student.PostalCode = postalcode;
 
             // Get the chosen subjects
             var chosenSubjects = _context.Subject
@@ -155,7 +156,7 @@ public class DatabaseService : IDatabaseService
         return model;
     }
 
-    public async Task<Student?> SaveStudent(int id, string name, int age, string major, int[] subjectIdDst)
+    public async Task<Student?> SaveStudent(int id, string name, int age, string major, string postalCode,int[] subjectIdDst)
     {
         Student? student = null;
         try
@@ -174,6 +175,7 @@ public class DatabaseService : IDatabaseService
                 Name = name,
                 Age = age,
                 Major = major,
+                PostalCode = postalCode,
                 AvailableSubjects = availableSubjects
             };
             _context.Add(student);

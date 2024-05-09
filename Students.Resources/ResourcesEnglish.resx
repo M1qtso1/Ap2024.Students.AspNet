@@ -207,6 +207,9 @@
   <data name="Operations" xml:space="preserve">
     <value>Operations</value>
   </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
   <data name="PrivacyPolicy" xml:space="preserve">
     <value>Privacy Policy</value>
   </data>

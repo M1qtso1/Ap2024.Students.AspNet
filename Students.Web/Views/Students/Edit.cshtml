@@ -40,6 +40,11 @@
                 <span asp-validation-for="Major" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label class="control-label">@sharedResourcesService.GetString("PostalCode", cultureInfo)</label>
+                <input asp-for="PostalCode" class="form-control" />
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <partial name="_SubjectsChoicePartial" model="Model" />
             </div>
             <div class="form-group">

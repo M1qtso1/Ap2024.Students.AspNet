@@ -17,7 +17,9 @@ public class Student
     [Required]
     [StringLength(100)]
     public string Major { get; set; } = string.Empty;
-
+    [Required]
+    [RegularExpression(@"^\d{2}-\d{3}$", ErrorMessage = "Invalid postal code format. Correct format: XX-XXX")]
+    public string PostalCode { get; set; } = string.Empty;
     public ICollection<StudentSubject> StudentSubjects { get; set; } = new List<StudentSubject>();
 
     [NotMapped]
@@ -27,11 +29,12 @@ public class Student
     {
     }
 
-    public Student(string name, int age, string major)
+    public Student(string name, int age, string major, string postalCode)
     {
         Name = name;
         Age = age;
         Major = major;
+        PostalCode = postalCode;
     }
 
     public void AddSubject(Subject subject)

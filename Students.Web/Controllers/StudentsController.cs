@@ -94,7 +94,7 @@ public class StudentsController : Controller
         {
                 if (ModelState.IsValid)
             {
-                var newstudent = await _databaseService.SaveStudent(student.Id, student.Name, student.Age, student.Major, subjectIdDst);
+                var newstudent = await _databaseService.SaveStudent(student.Id, student.Name, student.Age, student.Major, student.PostalCode, subjectIdDst);
                 result = View(newstudent);
                 return RedirectToAction(nameof(Index));
             }
@@ -141,13 +141,13 @@ public class StudentsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, string name, int age, string major, int[] subjectIdDst)
+    public async Task<IActionResult> Edit(int id, string name, int age, string major, string postalcode, int[] subjectIdDst)
     {
         IActionResult result;
 
         try
         {
-            bool saveResult = _databaseService.EditStudent(id, name, age, major, subjectIdDst);
+            bool saveResult = _databaseService.EditStudent(id, name, age, major, postalcode, subjectIdDst);
             if (!saveResult)
             {
                 throw new Exception("Error saving changes to the database.");
