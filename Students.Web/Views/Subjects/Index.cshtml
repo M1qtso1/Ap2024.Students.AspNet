@@ -38,7 +38,13 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Credits)
-            </td>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">@sharedResourcesService.GetString("Edit", cultureInfo)</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">@sharedResourcesService.GetString("Details", cultureInfo)</a> |

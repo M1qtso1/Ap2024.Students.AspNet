@@ -22,17 +22,17 @@ public class DatabaseServiceTests
         using var context = new StudentsContext(options);
         var service = new DatabaseService(logger.Object, context);
 
-        var student = new Student { Id = 1, Name = "Test", Age = 20, Major = "Test Major" };
+        var student = new Student { Id = 1, Name = "Test", Age = 20, Major = "Test Major", PostalCode = "00-000" };
         context.Student.Add(student);
         context.SaveChanges();
 
-        var subject1 = new Subject { Id = 1, Name = "Subject1" };
-        var subject2 = new Subject { Id = 2, Name = "Subject2" };
+        var subject1 = new Subject { Id = 1, Name = "Subject1", Credits = 1, StartDate = DateTime.Now.AddDays(-7), EndDate = DateTime.Now.AddDays(-3)};
+        var subject2 = new Subject { Id = 2, Name = "Subject2", Credits = 2, StartDate = DateTime.Now.AddDays(-6), EndDate = DateTime.Now.AddDays(-4)};
         context.Subject.AddRange(subject1, subject2);
         context.SaveChanges();
 
         // Act
-        var result = service.EditStudent(student.Id, "New Name", 21, "New Major", new[] { subject1.Id, subject2.Id });
+        var result = service.EditStudent(student.Id, "New Name", 21, "New Major", "21-001", new[] { subject1.Id, subject2.Id });
 
         // Assert
         Assert.True(result);

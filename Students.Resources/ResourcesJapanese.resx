@@ -168,6 +168,9 @@
   <data name="Edit" xml:space="preserve">
     <value>編集</value>
   </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>終了日</value>
+  </data>
   <data name="Floor" xml:space="preserve">
     <value>床</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>保存</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>開始日</value>
   </data>
   <data name="Student" xml:space="preserve">
     <value> 学生</value>

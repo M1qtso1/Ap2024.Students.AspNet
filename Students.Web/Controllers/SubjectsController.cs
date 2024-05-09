@@ -67,7 +67,7 @@ public class SubjectsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Name,Credits")] Subject subject)
+    public async Task<IActionResult> Create([Bind("Id,Name,Credits,StartDate,EndDate")] Subject subject)
     {
         IActionResult result = View(subject);
         if (ModelState.IsValid)
@@ -101,7 +101,7 @@ public class SubjectsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Credits")] Subject subject)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Credits,StartDate,EndDate")] Subject subject)
     {
         IActionResult result = NotFound();
         if (id != subject.Id)
