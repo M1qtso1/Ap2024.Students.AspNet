@@ -422,12 +422,28 @@ public class DatabaseService : IDatabaseService
     }
     public async Task<Lecturer?> EditLecturer(int? id)
     {
-        var lecturer = await _context.Lecturer.FindAsync(id);
+        var lecturer = await _context.Lecturer.Include(x => x.Subjects).SingleAsync(x => x.Id == id);
+        var assignedSubjectIds = lecturer.Subjects.Select(s => s.Id).ToList();
+        lecturer.AvailableSubjects = await _context.Subject
+            .Where(s => !assignedSubjectIds.Contains(s.Id))
+            .ToListAsync();
         return lecturer;
+
     }
-    public async Task<Lecturer?> EditLecturers(int id, Lecturer lecturer)
+    public async Task<Lecturer?> EditLecturers(int id, int[] subjectIdDst, Lecturer lecturer)
     {
-                _context.Update(lecturer);
+        var chosenSubjects = await _context.Subject
+        .Where(s => subjectIdDst.Contains(s.Id))
+        .ToListAsync();
+        if (chosenSubjects.Count > 0)
+        {
+            lecturer.Subjects = chosenSubjects;
+        }
+        else
+        {
+            lecturer.AvailableSubjects = _context.Subject.ToList();
+        }
+        _context.Update(lecturer);
                 await _context.SaveChangesAsync();
         return lecturer;
     }

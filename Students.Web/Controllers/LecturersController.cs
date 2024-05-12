@@ -71,12 +71,12 @@ namespace Students.Web.Controllers
             {
                 _context.Add(lecturer);
                 await _databaseService.SaveLecturer(lecturer, subjectIdDst);
-                result = View(lecturer);
                 return RedirectToAction(nameof(Index));
             }
             else
             {
                 ModelState.AddModelError("AvailableSubjects", "error ");
+                result = View(await _databaseService.CreateLecturer());
             }
             return result;
         }
@@ -103,7 +103,7 @@ namespace Students.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Age")] Lecturer lecturer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Lecturer lecturer, int[] subjectIdDst)
         {
             IActionResult result = View();
             if (id != lecturer.Id)
@@ -115,7 +115,7 @@ namespace Students.Web.Controllers
             {
                 try
                 {
-                    await _databaseService.EditLecturers(id, lecturer);
+                    await _databaseService.EditLecturers(id, subjectIdDst, lecturer);
                     result = View(lecturer);
                 }
                 catch (DbUpdateConcurrencyException)
@@ -130,6 +130,11 @@ namespace Students.Web.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                ModelState.AddModelError("AvailableSubjects", "error ");
+                result = View(await _databaseService.EditLecturer(id));
             }
             return result;
         }

@@ -42,7 +42,7 @@ public interface IDatabaseService
     Task<Lecturer?> CreateLecturer();
     Task<Lecturer?> SaveLecturer(Lecturer lecturer, int[] subjectIdDst);
     Task<Lecturer?> EditLecturer(int? id);
-    Task<Lecturer?> EditLecturers(int id, Lecturer lecturer);
+    Task<Lecturer?> EditLecturers(int id, int[] subjectIdDst, Lecturer lecturer);
     Task<Lecturer?> DeleteLecturer(int? id);
     Task<Lecturer?> DeleteConfirmedLecturer(int id);
     bool LecturerExist(int id);

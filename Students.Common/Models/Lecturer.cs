@@ -16,5 +16,7 @@ public class Lecturer
     public ICollection<Subject> Subjects { get; set; } = new List<Subject>();
     public int Age { get; set; }
     [NotMapped]
-    public ICollection<Subject>? AvailableSubjects { get; set; } = default!;
+    public ICollection<Subject>? AvailableSubjects { get; set; } = default!; 
+    [NotMapped]
+    public int[] SubjectIdDst { get; set; } = Array.Empty<int>();
 }
